@@ -1,0 +1,7 @@
+#!/bin/bash
+zxtm=localhost
+/opt/zeus/zxtm/bin/zcli << EOF
+stats nodes
+exit
+EOF
+

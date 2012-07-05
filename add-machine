@@ -1,0 +1,7 @@
+#!/bin/bash
+zxtm=localhost
+/opt/zeus/zxtm/bin/zcli << EOF
+Pool.addNodes ["JoyentDemo"],[["joyentcloud.com:80"]]
+exit
+EOF
+
