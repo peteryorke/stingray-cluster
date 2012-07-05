@@ -1,0 +1,16 @@
+#!/bin/bash
+zxtm=localhost
+passwd='[DSd.Zs>:f'
+/opt/zeus/zxtm/bin/zcli << EOF
+connect ${zxtm} 9090 admin "[DSd.Zs>:f"
+Pool.addPool ["JoyentDemo"],[["help.joyent.com:80","joyent.com:80","wiki.joyent.com:80"]]
+Pool.setLoadBalancingAlgorithm ["JoyentDemo"], roundrobin
+Pool.setPassiveMonitoring ["JoyentDemo"], 0
+Pool.setMonitors ["JoyentDemo"], "Full HTTP"
+Pool.setKeepalive ["JoyentDemo"], 1
+VirtualServer.addVirtualServer ["JoyentDemo"],{"default_pool" : "JoyentDemo","port" : "80","protocol":"http"}
+VirtualServer.setCompressionEnabled ["JoyentDemo"], yes
+VirtualServer.setEnabled ["JoyentDemo"], 1
+exit
+EOF
+
