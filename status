@@ -1,4 +1,6 @@
 #!/bin/bash
+#
+# Warning, this is a very taxing query to the load balancer
 zxtm=localhost
 /opt/zeus/zxtm/bin/zcli << EOF
 stats nodes
