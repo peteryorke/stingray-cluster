@@ -1,14 +1,14 @@
 #!/bin/bash
 zxtm=localhost
 /opt/zeus/zxtm/bin/zcli << EOF
-Pool.addPool ["JoyentDemo"],[["help.joyent.com:80","joyent.com:80","wiki.joyent.com:80"]]
-Pool.setLoadBalancingAlgorithm ["JoyentDemo"], roundrobin
-Pool.setPassiveMonitoring ["JoyentDemo"], 0
-Pool.setMonitors ["JoyentDemo"], "Full HTTP"
-Pool.setKeepalive ["JoyentDemo"], 1
-VirtualServer.addVirtualServer ["JoyentDemo"],{"default_pool" : "JoyentDemo","port" : "80","protocol":"http"}
-VirtualServer.setCompressionEnabled ["JoyentDemo"], yes
-VirtualServer.setEnabled ["JoyentDemo"], 1
+Pool.addPool ["Demo"],[["backend1:80","backend2:80","backend3:80"]]
+Pool.setLoadBalancingAlgorithm ["Demo"], roundrobin
+Pool.setPassiveMonitoring ["Demo"], 0
+Pool.setMonitors ["Demo"], "Full HTTP"
+Pool.setKeepalive ["Demo"], 1
+VirtualServer.addVirtualServer ["Demo"],{"default_pool" : "Demo","port" : "80","protocol":"http"}
+VirtualServer.setCompressionEnabled ["Demo"], yes
+VirtualServer.setEnabled ["Demo"], 1
 exit
 EOF
 
